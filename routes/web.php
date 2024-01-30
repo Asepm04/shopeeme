@@ -31,5 +31,13 @@ Route::controller(\App\Http\Controllers\AdminController::class)->group(function(
 {
     Route::get('/login','login');
     Route::get('/register','register');
-    Route::post('syslogin','syslog');
+    Route::post('/syslogin','syslog');
 });
+
+
+Route::controller(\App\Http\Controllers\UserController::class)->group(function()
+{
+    Route::post('/add','AddUser');
+});
+
+Route::get('/ad',function(){ return view('admin.adminRegister');});

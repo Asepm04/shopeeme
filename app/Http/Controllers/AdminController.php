@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Services\AdminServices;
-use Illuminate\Support\Facades\Auth;
+use Session;
+
 
 class AdminController extends Controller
 {
@@ -23,28 +24,38 @@ class AdminController extends Controller
         return view('admin.adminLogin');
     }
 
-    // public function syslog(Request $request)
-    // {
-    //     $result = $this->adminservices->login($request);
-    //     return dd($result);
-        
-    //     if($result)
-    //     {
-    //         return redirect('home');
-    //     }
-    //     else{
-    //         return "gagal";
-    //     }
-    // }
-
     public function syslog(Request $request)
     {
-        $email = $request->email;
-        $password = $request->password;
+    //     $result = $this->adminservices->login($request);
+    //    return dd($result);
 
-        $result = $this->adminservices->login($email,$password);
-        return dd($request->all(),$result);
+          $result = Auth::attempt(
+                    ['email' => $request->input('email'), 
+                    'password' => $request->input('password')]);
+                    return dd($result);
+        
+        if($result)
+        {
+            Session::put(['user'=>$email]);
+            return redirect('/home');
+        }
+        else{
+            return "gagal";
+        }
     }
+
+    // public function syslog(Request $request)
+    // {
+    //     $email = $request->input('email');
+    //     $password = bcrypt($request->input('password'));
+
+    //     $result = $this->adminservices->login($email,$password);
+    //     if($result)
+    //     {
+    //         return redirect('/');
+    //     }
+    //     else{return 'ggal';}
+    // }
 
     public function register()
     {

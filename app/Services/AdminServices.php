@@ -8,4 +8,5 @@ interface AdminServices
     //public function login($request):bool;
 
     public function login(string $email,string $password):bool;
+    public function add($reqeust);
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ImplAdmin implements AdminServices
 {
-    // public function login($request):bool
+    // public function login($request)
     // {
     //    return Auth::attempt(
     //         ['email' => $request->input('email'),
@@ -23,6 +23,16 @@ class ImplAdmin implements AdminServices
             ['email' => $email,
              'password' => $password
             ]);
+    }
+
+    public function add($request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return $user;
     }
 
 };

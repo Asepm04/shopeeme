@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Suport\Facades\Auth;
+// use Illuminate\Suport\Facades\Auth;
 
 class Admin extends Model
 {
