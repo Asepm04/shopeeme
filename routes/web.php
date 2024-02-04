@@ -38,6 +38,8 @@ Route::controller(\App\Http\Controllers\AdminController::class)->group(function(
 Route::controller(\App\Http\Controllers\UserController::class)->group(function()
 {
     Route::post('/add','AddUser');
+    Route::post('/uploadfile','uploadgambar');
 });
 
 Route::get('/ad',function(){ return view('admin.adminRegister');});
+Route::get('/uploadgambar',function(){return view('admin.formProduct');});

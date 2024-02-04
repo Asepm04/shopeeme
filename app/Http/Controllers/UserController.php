@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\AdminServices;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 
 
@@ -27,13 +28,14 @@ class UserController extends Controller
         {
             return 'gagal';
         }
-        // $user = new User();
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // if( $user->save())
-        // {
-        //     return redirect('/');
-        // }
+    }
+
+    public function uploadgambar(Request $request)
+    {
+        if(!EMPTY($request))
+        {
+            $this->adminservices->upload($request);
+            return redirect('/uploadgambar');
+        }
     }
 }

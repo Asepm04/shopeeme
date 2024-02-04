@@ -64,10 +64,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="../widgets.html" class="nav-link">
+          <a href="/uploadgambar" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Widgets
+              form Product
               <span class="right badge badge-danger">New</span>
             </p>
           </a>

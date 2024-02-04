@@ -35,4 +35,13 @@ class ImplAdmin implements AdminServices
         return $user;
     }
 
+    public function upload($request)
+    {
+        $name = $request->nama;
+        $gambar = $request->gambar;
+        $file = time().rand(100,999).'.'.$gambar->getClientOriginalName();
+        $gambar->move(public_path().'/gambar',$file);
+    }
+
+
 };
