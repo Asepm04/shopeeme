@@ -5,42 +5,50 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
+use App\Services\ProductServices;
 
 class ProductTest extends TestCase
 {
-    // public function testInsert()
-    // {
-    //     $product = new Product();
-    //     $product->id_product = 'SM0Z3';
-    //     $product->name_product = 'gamis';
-    //     $product->size = 'xl';
-    //     $result = $product->save();
+    private ProductServices $ProductServices;
 
-    //     self::assertTrue($result);
-    // }
-
-    // public function testDeleted()
-    // {
-    //     $product = Product::query()->where('id_product', '=' ,'SM0Z3');
-    //     $product->name_product = 'gamis2';
-    //     $result = $product->save();
-
-    //     $result = DB::table('products')->where('id_product', '=', 'SM0Z3 ')->update(['name_product' => 'gamis1']);
-
-    //     self::assertTrue($result);
-
-    //     $result = Product::query()->where('id_product', '=' ,'SM0Z3')->delete();
-    //     self::assertNotNull($result);
-
-
-    // }
-
-    public function testI()
+    public function setUp():void
     {
-        $this->get('/update/2e3p')
-        ->assertSeeText('0');
+        parent::setUp();
+        $this->ProductServices = $this->app->make(ProductServices::class);
+    }
+
+  
+    public function testAddproduct()
+    {
+        $data =['name'=>'',
+                'size'=>'xl',
+                'gambar'=>'gambar.jpg'];
+
+        $rules = ['name'=>'required|max:200',
+                  'size'=>'required|max:5',
+                  'gambar'=>'required|max:200'];
+
+        $validator = Validator::make($data,$rules);
+        $message = $validator->errors();
+
+        self::assertFalse($validator->passes());
+        log::info($message->toJson(JSON_PRETTY_PRINT));
+
+    }
+
+    public function testAdd()
+    {
+        $product = new Product();
+        $product->id_product = 123;
+        $product->name_product = 'distro';
+        $product->size = 'xxl';
+        $product->gambar = 'gambar.jpg';
+        
+        self::assertNotNull($product->save());
 
     }
 }

@@ -4,27 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Services\ProductServices;
 
 class ProductController extends Controller
 {
-    private Product $product;
 
-    public function __construct($product)
+    private ProductServices $productservices;
+
+    public function __construct(ProductServices $productservices)
     {
-        $product = $this->app->make(Product::class);
+        $this->productservices = $productservices;
     }
 
-//    public function input()
-//    {
-//      $product = new Product();
-//      $product->input();
-//      redirect('/testinput',['massage'=>'success']);
-//    }
+    public function adProduct(Request $request)
+    {
+       if (!EMPTY($request))
+       {
+        $this->productservices->addProduct($request);
+        return "ok";
+       }
+       else{
+        return "gagal";
+       }
+    }
 
-   public function update($id)
-   {
-    // $product = new Product();
-    $this->product->updated($id);
-    redirect('/testinput',['massage'=>'success']);
-   }
+    public function testing()
+    {
+        $data  = Product::get();
+        return view('product.prod',['data'=>$data]);
+    }
 }

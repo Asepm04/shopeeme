@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AdminProvider::class,
+        App\Providers\ProductProvider::class,
+
 
     ],
 

@@ -41,5 +41,14 @@ Route::controller(\App\Http\Controllers\UserController::class)->group(function()
     Route::post('/uploadfile','uploadgambar');
 });
 
+
+Route::controller(\App\Http\Controllers\ProductController::class)->group(function()
+{
+    Route::get('/add/product',function(){return view('product.form_product');});
+    Route::post('/proses/product','adProduct');
+    Route::get('/testing','testing');
+});
+
+
 Route::get('/ad',function(){ return view('admin.adminRegister');});
 Route::get('/uploadgambar',function(){return view('admin.formProduct');});

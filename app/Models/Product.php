@@ -16,20 +16,4 @@ class Product extends Model
     public    $incrementing = true;
     public    $timestamps   = true;
 
-    public function input()
-    {
-        $input = new Product();
-        $input->id_product = '2e3p9';
-        $input->name_product = 'celana';
-        $input->size = 'L';
-        $input->save();
-    }
-
-    public function updated($id)
-    {
-        $input =DB::table('Product')->where('id_product','=',$id)
-                ->update(['size'=>' XXL']);
-
-       
-    }
 }

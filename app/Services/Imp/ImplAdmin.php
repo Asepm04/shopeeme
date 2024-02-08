@@ -35,6 +35,19 @@ class ImplAdmin implements AdminServices
         return $user;
     }
 
+    // public function add($request)
+    // {
+    //     $user = new User();
+    //         $data = [ $user->name = $request->name,
+    //                 $user->email = $request->email,
+    //                 $user->password = bcrypt($request->password)
+    //                  ];
+    //    $rules = [ $user->email => 'required'|'email'];
+    //    $validator= Validator::make($data,$rules);
+    //     $user->save();
+    //     return $user;
+    // }
+
     public function upload($request)
     {
         $name = $request->nama;

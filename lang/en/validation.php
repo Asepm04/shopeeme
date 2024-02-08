@@ -144,6 +144,15 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'email'=> 'hanya boleh menggunakan email',
+        ],
+        'password'=> [
+            'min'=>'minimal 6 karakter',
+        ],
+        'name'=> [
+            'required'=>'nama wajib diisi'
+        ]
     ],
 
     /*
