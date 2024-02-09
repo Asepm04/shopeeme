@@ -2,6 +2,8 @@
 desc products;
 select * from products ;
 
+delete from products;
+
 desc users;
 
 select * from users;

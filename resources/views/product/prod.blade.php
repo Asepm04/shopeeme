@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-     @foreach($data as $dta)
-     <li>{{$dta['gambar']}}</li>
-     @endforeach
-</body>
-</html>
+@extends('master')
+
+@section('content')
+    <table class=" table table-striped table-dark">
+        <thead>
+            <th>ID Product</th>
+            <th>Name Product</th>
+            <th>Size</th>
+            <th>gambar Product</th>
+        </thead>
+        <tbody>
+            @foreach($data as $dta)
+            <tr>
+            <td>{{$loop->iteration}}</td>
+            <td>{{$dta['name_product']}}</td>
+            <td>{{$dta['size']}}</td>
+            <td><img src="/img/{{$dta['gambar']}}" alt="" style="width:20px;height:20px;">
+            </td>
+            </tr>
+            @endforeach
+            
+
+        </tbody>
+    </table>
+     
+
+@endsection

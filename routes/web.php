@@ -46,7 +46,7 @@ Route::controller(\App\Http\Controllers\ProductController::class)->group(functio
 {
     Route::get('/add/product',function(){return view('product.form_product');});
     Route::post('/proses/product','adProduct');
-    Route::get('/testing','testing');
+    Route::get('/product','getData');
 });
 
 

@@ -4,9 +4,23 @@
 
 <div class="col-sm-4"></div>
 <div class="form-group col-sm-4" style="margin-top:20px">
+
+  @if($errors->any())
+
+  @foreach($errors->all() as $error)
+
+  <div class="alert-danger">
+    {{$error}}
+  </div>
+
+  @endforeach
+
+  @endif
+
     <form action="{{'/proses/product'}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="input-group mb-3">
+          {{-- @error('id') {{$message}} @enderror --}}
             <input type="text" class="form-control" placeholder="id" name="id">
             <div class="input-group-append">
               <div class="input-group-text">

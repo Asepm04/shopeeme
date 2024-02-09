@@ -152,6 +152,16 @@ return [
         ],
         'name'=> [
             'required'=>'nama wajib diisi'
+        ],
+        'id'=> [
+            'required'=>'id wajib di isi'
+        ],
+        'size'=> [
+            'required'=>'size wajib di isi'
+        ],
+        'gambar'=> [
+            'required'=>'gambar wajib di isi',
+            'image'=>'harus file gambar'
         ]
     ],
 
